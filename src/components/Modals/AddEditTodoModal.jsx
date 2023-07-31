@@ -1,46 +1,68 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {Button, DatePicker, Form, Input, Modal, Select} from "antd";
 import TextArea from "antd/es/input/TextArea.js";
 import {users} from "../../utils/users.js";
 import {todoContext} from "../../Context/GlobalContext.jsx";
 import {toast} from "react-toastify";
 import {v4 as uuid} from "uuid";
+import dayjs from "dayjs";
 
-function AddEditTodoModal({openModal, setOpenModal, status}) {
+function AddEditTodoModal({openModal, setOpenModal, status, edit, task}) {
     const [addTodoForm] = Form.useForm()
-    const {addTodo} = useContext(todoContext)
+    const {addTodo, updateTodo} = useContext(todoContext)
     const handleCancel = () => {
         setOpenModal(false)
     }
     const onFinish = (values) => {
         values.due_date = values.due_date.format('YYYY-MM-DD')
-        values.id = uuid()
-        values.status = status
-        addTodo(values)
-        toast.success('Todo created successfully')
+
+        if (edit) {
+            values.id = task.id
+            values.status = task?.status
+            updateTodo(values)
+            toast.success('Todo edited successfully')
+        } else {
+            values.id = uuid()
+            values.status = status
+            addTodo(values)
+            toast.success('Todo created successfully')
+        }
 
         addTodoForm.resetFields()
         setOpenModal(false)
     }
+
+    useEffect(() => {
+        addTodoForm.setFieldsValue({
+            title: task?.title,
+            description: task?.description,
+            due_date: edit ? dayjs(task?.due_date) : null,
+            assigned_to: task?.assigned_to
+        });
+    }, [openModal])
     return (
         <Modal
-            title={`Add Todo`}
+            title={edit ? `${task?.title} Edit Todo` : `Add Todo`}
             open={openModal}
             destroyOnClose={true}
             footer={null}
             onCancel={handleCancel}
         >
             <Form
-                name={"AddTodoForm"}
-                onFinish={onFinish}
                 layout={"vertical"}
+                onFinish={onFinish}
                 scrollToFirstError={true}
                 autoComplete={"off"}
                 form={addTodoForm}
+                preserve={false}
+                initialValues={edit &&
+                    {...task, due_date: dayjs(task?.due_date)}
+                }
             >
                 <Form.Item
                     label={"Title"}
                     name={"title"}
+
                     rules={[
                         {
                             required: true,
@@ -76,6 +98,7 @@ function AddEditTodoModal({openModal, setOpenModal, status}) {
                 <Form.Item
                     label={"Due Date"}
                     name={"due_date"}
+                    preserve={false}
                     rules={[
                         {
                             required: true,
@@ -108,7 +131,7 @@ function AddEditTodoModal({openModal, setOpenModal, status}) {
 
                 <Form.Item>
                     <Button type={"primary"} htmlType={"submit"}>
-                        Add Todo
+                        {edit ? "Update " : "Add New "} Todo
                     </Button>
                 </Form.Item>
             </Form>

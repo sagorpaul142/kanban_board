@@ -5,10 +5,10 @@
     max-height: calc(100vh - 180px);
     /*background: #16181d;*/
     background: #646c7e;
-    overflow: hidden;
+    overflow: auto;
 }
 .task_list_column:hover{
-    overflow-y: scroll;
+    /*overflow-y: scroll;*/
 }
 
 .task_list_column::-webkit-scrollbar {

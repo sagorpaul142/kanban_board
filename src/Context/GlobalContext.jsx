@@ -15,7 +15,7 @@ const initialData = {
                 description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
                 due_date: "2023-07-29",
                 assigned_to: 'clementine_bauch'
-            }
+            },
         ],
         color: 'rgb(211, 211, 211)'
     },
@@ -43,8 +43,18 @@ function GlobalContext({children}) {
             },
         }));
     }
+    const updateTodo = (updatedTodo) => {
+        const {id, status} = updatedTodo
+        setTodos((prevState) => ({
+            ...prevState,
+            [status]: {
+                ...prevState[status],
+                items: [...prevState[status].items].map((task) => task.id === id ? updatedTodo : task),
+            },
+        }));
+    }
     return (
-        <todoContext.Provider value={{todos, setTodos, addTodo}}>
+        <todoContext.Provider value={{todos, setTodos, addTodo, updateTodo}}>
             {children}
         </todoContext.Provider>
     );
