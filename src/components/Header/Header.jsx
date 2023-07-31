@@ -24,7 +24,7 @@ function Header({title, color, status, numberOfTodo = 0}) {
                     />
                 </div>
             </Card>
-            <AddEditTodoModal openModal={openModal} setOpenModal={setOpenModal}/>
+            <AddEditTodoModal status={status} openModal={openModal} setOpenModal={setOpenModal}/>
         </>
     );
 }

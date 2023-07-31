@@ -33,8 +33,18 @@ const initialData = {
 
 function GlobalContext({children}) {
     const [todos, setTodos] = useState(initialData)
+    const addTodo = (values) => {
+        const status = values.status
+        setTodos((prevState) => ({
+            ...prevState,
+            [status]: {
+                ...prevState[status],
+                items: [...prevState[status]?.items, values],
+            },
+        }));
+    }
     return (
-        <todoContext.Provider value={{todos, setTodos}}>
+        <todoContext.Provider value={{todos, setTodos, addTodo}}>
             {children}
         </todoContext.Provider>
     );

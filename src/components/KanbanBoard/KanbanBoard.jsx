@@ -68,7 +68,7 @@ function KanbanBoard() {
                                         title={column.name}
                                         color={column.color}
                                         numberOfTodo={column?.items?.length}
-                                        status={column.name === TO_DO ? 'todo' : column.name === IN_PROGRESS ? "in_progress" : 'done'}
+                                        status={column.name === TO_DO ? 'todo' : column.name === IN_PROGRESS ? "progress" : 'done'}
                                     />
                                     <TaskList columnId={columnId} column={column}/>
                                 </div>

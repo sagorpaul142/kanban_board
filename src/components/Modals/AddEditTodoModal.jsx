@@ -1,21 +1,32 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Button, DatePicker, Form, Input, Modal, Select} from "antd";
 import TextArea from "antd/es/input/TextArea.js";
 import {users} from "../../utils/users.js";
+import {todoContext} from "../../Context/GlobalContext.jsx";
+import {toast} from "react-toastify";
+import {v4 as uuid} from "uuid";
 
-function AddEditTodoModal({openModal, setOpenModal}) {
+function AddEditTodoModal({openModal, setOpenModal, status}) {
+    const [addTodoForm] = Form.useForm()
+    const {addTodo} = useContext(todoContext)
     const handleCancel = () => {
         setOpenModal(false)
     }
     const onFinish = (values) => {
-        console.log(values)
+        values.due_date = values.due_date.format('YYYY-MM-DD')
+        values.id = uuid()
+        values.status = status
+        addTodo(values)
+        toast.success('Todo created successfully')
+
+        addTodoForm.resetFields()
+        setOpenModal(false)
     }
     return (
         <Modal
             title={`Add Todo`}
             open={openModal}
             destroyOnClose={true}
-
             footer={null}
             onCancel={handleCancel}
         >
@@ -25,6 +36,7 @@ function AddEditTodoModal({openModal, setOpenModal}) {
                 layout={"vertical"}
                 scrollToFirstError={true}
                 autoComplete={"off"}
+                form={addTodoForm}
             >
                 <Form.Item
                     label={"Title"}
@@ -78,6 +90,12 @@ function AddEditTodoModal({openModal, setOpenModal}) {
                 <Form.Item
                     label={'Assigned To'}
                     name={'assigned_to'}
+                    rules={[
+                        {
+                            required: true,
+                            message: "Please select a person!"
+                        }
+                    ]}
                 >
                     <Select
                         allowClear
