@@ -1,0 +1,30 @@
+.task_section {
+    border: 1px solid rgb(232, 234, 237);
+    margin-bottom: 10px;
+    padding: 7px 10px;
+    min-width: 0;
+    flex-grow: 1;
+    background: #242731;
+    color: #E8E8EA;
+    border-radius: 3px;
+    outline: 2px solid transparent;
+}
+
+.task_box:last-child {
+    margin-bottom: 0;
+}
+
+.task_title, .assign_to, .task_description, .due_date {
+    font-family: 'Saira', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.2;
+    /*color: #000;*/
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+}
+.task_description, .due_date{
+    margin: 0.4rem 0;
+}

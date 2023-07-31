@@ -1,0 +1,31 @@
+.task_list_column{
+    padding: 0.5rem;
+    max-width: 300px;
+    min-height: 31.25rem;
+    max-height: calc(100vh - 180px);
+    /*background: #16181d;*/
+    background: #646c7e;
+    overflow: hidden;
+}
+.task_list_column:hover{
+    overflow-y: scroll;
+}
+
+.task_list_column::-webkit-scrollbar {
+    width: 8px;
+}
+
+.task_list_column::-webkit-scrollbar-track {
+    /*background: transparent;*/
+    background: #f1f1f1;
+}
+
+.task_list_column::-webkit-scrollbar-thumb {
+    background: #999;
+    border: 2px solid transparent;
+    border-radius: 10px;
+}
+
+.task_list_column::-webkit-scrollbar-thumb:hover {
+    background: #099598;
+}
