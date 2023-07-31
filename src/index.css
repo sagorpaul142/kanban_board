@@ -20,6 +20,14 @@ body {
     font-family: 'Saira', sans-serif;
 }
 
+.w-100 {
+    width: 100%;
+}
+
+.justify-end {
+    justify-content: flex-end;
+}
+
 .text-center {
     text-align: center;
 }
@@ -32,6 +40,10 @@ body {
     cursor: grab;
 }
 
-.mt-4{
+.mt-4 {
     margin-top: 1rem;
+}
+
+.ml-2 {
+    margin-left: 0.5rem;
 }
