@@ -3,8 +3,7 @@
     max-width: 300px;
     min-height: 31.25rem;
     max-height: calc(100vh - 180px);
-    /*background: #16181d;*/
-    background: #646c7e;
+    background: #f4f4f4;
     overflow: auto;
 }
 

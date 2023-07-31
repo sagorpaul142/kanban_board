@@ -4,8 +4,9 @@
     padding: 7px 10px;
     min-width: 0;
     flex-grow: 1;
-    background: #242731;
-    color: #E8E8EA;
+    /*background: #242731;*/
+    background: #b9babf;
+    color: #000;
     border-radius: 3px;
     outline: 2px solid transparent;
 }
