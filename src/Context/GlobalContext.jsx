@@ -1,6 +1,7 @@
 import {createContext, useState} from "react";
 import {DONE, IN_PROGRESS, TO_DO} from "../utils/helper.js";
 import {v4 as uuid} from "uuid";
+import {toast} from "react-toastify";
 
 export const todoContext = createContext()
 
@@ -53,8 +54,19 @@ function GlobalContext({children}) {
             },
         }));
     }
+    const deleteTodo = (id, status, title) => {
+        console.log(id, status)
+        setTodos((prevState) => ({
+            ...prevState,
+            [status]: {
+                ...prevState[status],
+                items: [...prevState[status].items]?.filter((task) => task.id !== id),
+            },
+        }));
+        toast.success(`${title} todo deleted successfully`)
+    }
     return (
-        <todoContext.Provider value={{todos, setTodos, addTodo, updateTodo}}>
+        <todoContext.Provider value={{todos, setTodos, addTodo, updateTodo, deleteTodo}}>
             {children}
         </todoContext.Provider>
     );

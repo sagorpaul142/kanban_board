@@ -8,7 +8,6 @@ import {DONE, IN_PROGRESS, TO_DO} from "../../utils/helper.js";
 
 function KanbanBoard() {
     const {todos, setTodos} = useContext(todoContext)
-    console.log(todos)
     const onDragEnd = (result, columns, setColumns) => {
         if (!result.destination) return;
         const {source, destination} = result;

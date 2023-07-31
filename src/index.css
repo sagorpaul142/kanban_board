@@ -47,3 +47,26 @@ body {
 .ml-2 {
     margin-left: 0.5rem;
 }
+
+.single_list {
+    border: 1px solid rgba(5, 5, 5, 0.06);
+    padding: 12px 24px;
+}
+
+.single_list .ant-spin-nested-loading .ant-spin-container .ant-list-item {
+    padding: 12px 0 !important;
+    justify-content: inherit !important;
+}
+
+.single_list .ant-spin-nested-loading .ant-spin-container .ant-list-item.list_full_side {
+    width: 100%;
+}
+
+.single_list .ant-spin-nested-loading .ant-spin-container .ant-list-item.list_left_side, .list_right_side, .list_full_side .list_title {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.single_list .ant-spin-nested-loading .ant-spin-container .ant-list-item .list_text {
+    text-align: justify;
+}
