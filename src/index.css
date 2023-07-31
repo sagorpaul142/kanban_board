@@ -70,3 +70,55 @@ body {
 .single_list .ant-spin-nested-loading .ant-spin-container .ant-list-item .list_text {
     text-align: justify;
 }
+
+@media (max-width: 1000px) {
+    .kanban_column {
+        flex-direction: column;
+        padding: 0 1rem;
+    }
+
+    .all_column {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .task_list_column {
+        max-width: 100%;
+        min-height: 155px;
+        max-height: 100%;
+        overflow-x: auto;
+        display: flex;
+        align-items: center;
+        grid-gap: 10px;
+        flex-direction: row;
+    }
+
+    .task_list_column::-webkit-scrollbar {
+        height: 8px;
+    }
+
+    .task_list_column::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    .task_list_column::-webkit-scrollbar-thumb {
+        background: #999;
+        border: 2px solid transparent;
+        border-radius: 10px;
+    }
+
+    .task_list_column::-webkit-scrollbar-thumb:hover {
+        background: #099598;
+    }
+
+    .task_section {
+        margin-bottom: 0;
+        width: 300px;
+    }
+
+    .header {
+        width: auto;
+    }
+}
+

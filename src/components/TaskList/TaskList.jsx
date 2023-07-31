@@ -1,4 +1,3 @@
-import React from 'react';
 import Task from "../Task/Task.jsx";
 import "./static/TaskList.css"
 import {Draggable, Droppable} from "react-beautiful-dnd";
@@ -29,6 +28,7 @@ function TaskList({columnId, column}) {
                                                 backgroundColor: snapshot.isDragging ? "#263B4A" : "#456C86",
                                                 ...provided.draggableProps.style
                                             }}
+                                            className={"single_task"}
                                         >
                                             <Task task={item}/>
                                         </div>
@@ -47,7 +47,3 @@ function TaskList({columnId, column}) {
 }
 
 export default TaskList;
-
-//                                     <div className="mt-4 task_list_column">
-//     <Task />
-// </div>

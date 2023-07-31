@@ -10,10 +10,6 @@
     outline: 2px solid transparent;
 }
 
-.task_box:last-child {
-    margin-bottom: 0;
-}
-
 .task_title, .assign_to, .task_description, .due_date {
     font-family: 'Saira', sans-serif;
     font-size: 16px;

@@ -1,8 +1,8 @@
-import React, {useContext} from 'react';
+import {useContext} from 'react';
 import Header from "../Header/Header.jsx";
 import "./static/KanbanBoard.css"
 import TaskList from "../TaskList/TaskList.jsx";
-import {DragDropContext, Droppable} from "react-beautiful-dnd";
+import {DragDropContext} from "react-beautiful-dnd";
 import {todoContext} from "../../Context/GlobalContext.jsx";
 import {DONE, IN_PROGRESS, TO_DO} from "../../utils/helper.js";
 
@@ -62,7 +62,7 @@ function KanbanBoard() {
                     {
                         Object.entries(todos).map(([columnId, column], index) => {
                             return (
-                                <div key={index}>
+                                <div key={index} className={"all_column"}>
                                     <Header
                                         title={column.name}
                                         color={column.color}

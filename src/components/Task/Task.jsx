@@ -13,7 +13,7 @@ function Task({task}) {
     const [open, setOpen] = useState(false)
     const {deleteTodo} = useContext(todoContext)
     return (
-        <div className={'cursor-grab task_section'}>
+        <div className={'task_section'}>
             <div className="task_title">{task?.title}</div>
             <div className="task_description">
                 {task?.description?.length > 22 ? task?.description?.slice(0, 22) + ' ...' : task?.description}

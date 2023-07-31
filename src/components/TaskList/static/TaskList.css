@@ -7,16 +7,12 @@
     background: #646c7e;
     overflow: auto;
 }
-.task_list_column:hover{
-    /*overflow-y: scroll;*/
-}
 
 .task_list_column::-webkit-scrollbar {
     width: 8px;
 }
 
 .task_list_column::-webkit-scrollbar-track {
-    /*background: transparent;*/
     background: #f1f1f1;
 }
 
